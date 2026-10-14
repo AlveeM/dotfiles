@@ -1,0 +1,44 @@
+# Bootstrap project for this dotfiles repo. Apply with:
+#   mise bootstrap --from <repo-url> --from-dir ~/.zsh          (work / base tools only)
+#   mise -E personal bootstrap --from <repo-url> --from-dir ~/.zsh   (personal machines)
+# See bootstrap.sh and README.md.
+
+# apt entries are skipped where apt-get is missing (macOS). "latest" accepts whatever
+# Ubuntu provides; update on purpose with `mise bootstrap packages upgrade`.
+[bootstrap.packages]
+"apt:zsh" = "latest"
+"apt:git" = "latest"
+"apt:curl" = "latest"
+"apt:ca-certificates" = "latest"
+"apt:build-essential" = "latest"
+"apt:unzip" = "latest"
+# Compile fallbacks, needed only when mise builds Ruby/Python from source.
+"apt:libssl-dev" = "latest"
+"apt:libffi-dev" = "latest"
+"apt:zlib1g-dev" = "latest"
+"apt:libyaml-dev" = "latest"
+"apt:libreadline-dev" = "latest"
+# JetBrains Mono Nerd Font for starship and eza --icons (macOS; manual on Ubuntu).
+"brew-cask:font-jetbrains-mono-nerd-font" = { os = "macos" }
+
+[bootstrap.user]
+login_shell = "/bin/zsh"
+
+# Symlinks into $HOME; relative sources are relative to this file.
+[dotfiles]
+"~/.zshrc"                            = { source = "zshrc" }
+"~/.zprofile"                         = { source = "zprofile" }
+"~/.gitconfig"                        = { source = "gitconfig" }
+"~/.config/starship.toml"             = { source = "starship.toml" }
+"~/.config/helix/config.toml"         = { source = "helix/config.toml" }
+"~/.config/helix/languages.toml"      = { source = "helix/languages.toml" }
+"~/.config/mise/config.toml"          = { source = "mise/config.toml" }
+"~/.config/mise/config.personal.toml" = { source = "mise/config.personal.toml" }
+"~/.config/mise/config.work.toml"     = { source = "mise/config.work.toml" }
+"~/.config/mise/mise.lock"            = { source = "mise/mise.lock" }
+"~/.config/mise/mise.personal.lock"   = { source = "mise/mise.personal.lock" }  # written by `mise lock` for MISE_ENV=personal
+
+# Runs on every `mise bootstrap`, so it must stay idempotent: setup-plugins.zsh
+# re-pins every plugin to the SHA in plugins/plugins.lock.
+[tasks.bootstrap]
+run = "zsh ~/.zsh/setup-plugins.zsh"

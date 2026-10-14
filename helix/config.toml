@@ -1,0 +1,36 @@
+theme = 'catppuccin_mocha'
+
+[editor]
+line-number = "relative"
+bufferline = "multiple"
+scrolloff = 999
+# Sync clipboard with system clipboard
+# default-yank-register = "+"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.normal]
+"^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
+# Use Shift-l and -h to move through tabs
+S-l = ":buffer-next"
+S-h = ":buffer-previous"
+
+[keys.normal.space]
+# Open markdown previw with mpls
+m = ":lsp-workspace-command open-preview"
+
+[keys.select]
+"^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
+
+[editor.indent-guides]
+render = true
+character = "┊" # Some characters that work well: "▏", "┆", "┊"
+skip-levels = 1

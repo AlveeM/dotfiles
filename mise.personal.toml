@@ -1,0 +1,4 @@
+# Applied only with `mise -E personal bootstrap ...`. Persists the choice so later
+# shells and plain `mise` commands use the personal tool set.
+[dotfiles]
+"~/.zshenv/mise-env" = { line = 'export MISE_ENV=personal' }

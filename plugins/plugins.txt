@@ -1,0 +1,6 @@
+# Local checkouts are installed at the revisions in plugins.lock.
+# After editing, regenerate with: zsh ~/.zsh/setup-plugins.zsh
+~/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions kind:fpath path:src
+~/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-autosuggestions kind:defer
+~/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting kind:defer
+~/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-history-substring-search kind:defer

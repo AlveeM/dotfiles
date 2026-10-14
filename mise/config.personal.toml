@@ -1,0 +1,42 @@
+# Personal tool overlay, loaded only when MISE_ENV=personal.
+# Deployed to ~/.config/mise/config.personal.toml.
+
+[tools]
+# Node — current LTS line.
+node = "lts"
+
+# Python — latest release.
+python = "latest"
+
+# Ruby
+ruby = "latest"
+
+# Go
+go = "latest"
+
+# Java
+java = "temurin-17"
+
+# JS package managers
+pnpm = "latest"
+yarn = "latest"
+
+# JVM build tools — most projects use ./gradlew anyway.
+gradle = "latest"
+maven = "latest"
+
+# Kubernetes — pin kubectl per project to match the cluster.
+kubectl = "latest"
+kind = "latest"
+k3d = "latest"
+minikube = "latest"
+kubectx = "latest"
+kubens = "latest"
+
+# Misc CLIs — hugo is the extended build.
+flyctl = "latest"
+hugo-extended = "latest"
+uv = "latest"
+
+# Markdown formatter used by helix/languages.toml (npm backend needs node, which is in this file)
+prettier = "latest"

@@ -1,0 +1,26 @@
+[language-server.rumdl]
+command = "rumdl"
+args = ["server"]
+ 
+[language-server.harper-ls]
+command = "harper-ls"
+args = ["--stdio"]
+ 
+[language-server.mpls]
+command = "mpls"
+args = ["--no-auto", "--enable-emoji"]
+# An example args entry showing how to specify flags with values:
+# args = ["--port", "8080", "--browser", "google-chrome", "--theme", "gruvbox-dark"]
+ 
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "harper-ls", "rumdl", "mpls"]
+soft-wrap.enable = true
+text-width = 80
+soft-wrap.wrap-at-text-width = true
+formatter = { command = 'prettier', args = [
+  "--parser",
+  "markdown",
+  "--prose-wrap",
+  "never", # <always|never|preserve>
+] }

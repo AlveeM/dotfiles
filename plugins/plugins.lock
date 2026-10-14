@@ -1,0 +1,8 @@
+# URL commit path-relative-to-HOME
+# Update a commit deliberately, then run: zsh ~/.zsh/setup-plugins.zsh
+https://github.com/mattmc3/antidote.git 61a07ca521e8f811bbcd6da74a244119209980cb .zsh/plugins/antidote
+https://github.com/romkatv/zsh-defer.git 53a26e287fbbe2dcebb3aa1801546c6de32416fa .cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-romkatv-SLASH-zsh-defer
+https://github.com/zsh-users/zsh-completions.git 6661b4b68173784ba31ef10ce4b5cb1c9ecfdcac .cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions
+https://github.com/zsh-users/zsh-autosuggestions.git 85919cd1ffa7d2d5412f6d3fe437ebdbeeec4fc5 .cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-autosuggestions
+https://github.com/zsh-users/zsh-syntax-highlighting.git 1d85c692615a25fe2293bdd44b34c217d5d2bf04 .cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting
+https://github.com/zsh-users/zsh-history-substring-search.git 14c8d2e0ffaee98f2df9850b19944f32546fdea5 .cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-history-substring-search

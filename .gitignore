@@ -1,0 +1,13 @@
+# Third-party plugin checkouts and generated loader (recreated by setup-plugins.zsh)
+plugins/antidote/
+plugins/plugins.zsh
+plugins/plugins.zsh.zwc
+plugins/plugins.zsh.*
+plugins/.setup-lock
+*.zwc
+.DS_Store
+
+
+# mise install-lock scratch directories
+.mise/
+mise/.mise/

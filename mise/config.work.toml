@@ -1,0 +1,2 @@
+# Work-only tool overlay, loaded only when MISE_ENV=work. Currently empty:
+# work machines get just the base tools from config.toml.

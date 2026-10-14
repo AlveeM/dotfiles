@@ -1,0 +1,23 @@
+# Base mise config, deployed to ~/.config/mise/config.toml on every machine.
+# Only the CLI tools the shell config depends on live here. Language runtimes and
+# other personal tools are in config.personal.toml (loaded with MISE_ENV=personal).
+
+[tools]
+starship = "latest"
+zoxide = "latest"
+fzf = "latest"
+eza = "latest"
+bat = "latest"
+fd = "latest"
+ripgrep = "latest"
+helix = "latest"
+
+# Language servers used by helix/languages.toml (markdown)
+rumdl = "latest"
+harper-ls = "latest"
+marksman = "latest"
+"github:mhersson/mpls" = "latest"
+
+[settings]
+# Enable experimental mise features. Uncomment to opt in.
+# experimental = true
