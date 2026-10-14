@@ -1,6 +1,8 @@
-# Local checkouts are installed at the revisions in plugins.lock.
-# After editing, regenerate with: zsh ~/.zsh/setup-plugins.zsh
-~/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions kind:fpath path:src
-~/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-autosuggestions kind:defer
-~/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting kind:defer
-~/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-history-substring-search kind:defer
+# Every entry must carry pin:<40-char sha>; setup-plugins.zsh refuses anything else.
+# To update: change the SHA, review the diff upstream, then run: zsh ~/.zsh/setup-plugins.zsh
+# zsh-defer is cloned implicitly for kind:defer; preset pins it without a second clone.
+preset:romkatv/zsh-defer pin:53a26e287fbbe2dcebb3aa1801546c6de32416fa
+zsh-users/zsh-completions kind:fpath path:src pin:6661b4b68173784ba31ef10ce4b5cb1c9ecfdcac
+zsh-users/zsh-autosuggestions kind:defer pin:85919cd1ffa7d2d5412f6d3fe437ebdbeeec4fc5
+zsh-users/zsh-syntax-highlighting kind:defer pin:1d85c692615a25fe2293bdd44b34c217d5d2bf04
+zsh-users/zsh-history-substring-search kind:defer pin:14c8d2e0ffaee98f2df9850b19944f32546fdea5

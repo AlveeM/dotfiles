@@ -40,6 +40,6 @@ login_shell = "/bin/zsh"
 "~/.config/mise/mise.personal.lock"   = { source = "mise/mise.personal.lock" }  # written by `mise lock` for MISE_ENV=personal
 
 # Runs on every `mise bootstrap`, so it must stay idempotent: setup-plugins.zsh
-# re-pins every plugin to the SHA in plugins/plugins.lock.
+# re-pins every plugin to the `pin:` SHA in plugins/plugins.txt.
 [tasks.bootstrap]
 run = "zsh ~/.zsh/setup-plugins.zsh"
