@@ -10,7 +10,7 @@ _zsh_init_completion() {
 
   # Directory mtimes detect additions/removals; rebuild-completions covers
   # in-place edits to completion declarations that do not change these mtimes.
-  for dir in "${fpath[@]}" "$HOME/.zsh/plugins/plugins.zsh" "$HOME/.zsh/plugins/plugins.lock"; do
+  for dir in "${fpath[@]}" "$HOME/.zsh/plugins/plugins.zsh"; do
     if zstat -H metadata +mtime -- "$dir" 2>/dev/null; then
       signature+=$'\n'"$dir:$metadata[mtime]"
     else

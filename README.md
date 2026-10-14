@@ -53,8 +53,8 @@ Defined in [`mise.toml`](mise.toml), in mise's own order:
 2. **dotfiles**: symlinks from `$HOME` into this repo (see the table below).
 3. **user**: sets the login shell to `/bin/zsh` (takes effect at the next login).
 4. **tools**: installs the mise tools.
-5. **task**: runs `setup-plugins.zsh`, which pins every zsh plugin to the commit in
-   `plugins/plugins.lock` and regenerates the plugin loader.
+5. **task**: runs `setup-plugins.zsh`, which has Antidote check out every zsh plugin at the
+   `pin:` commit in `plugins/plugins.txt` and regenerates the plugin loader.
 
 Re-running is safe: parts that already match are left alone.
 
@@ -119,7 +119,7 @@ Headless servers do not need it: the font belongs to the terminal you connect fr
 
 ## Updating
 
-- **Plugins:** change the commit in `plugins/plugins.lock`, review the diff upstream, then
+- **Plugins:** change the `pin:` commit in `plugins/plugins.txt`, review the diff upstream, then
   `zsh ~/.zsh/setup-plugins.zsh` and open a new shell. Nothing updates on its own.
 - **Tool versions:** `MISE_ENV=personal mise lock --global --platform macos-arm64,linux-x64,linux-arm64`
   refreshes both lockfiles; commit them.
@@ -134,8 +134,8 @@ bootstrap.sh                      installs prerequisites and mise, then runs mis
 zshrc  zprofile  gitconfig        deployed to $HOME
 aliases.zsh exports.zsh path.zsh  shell config, sourced by zshrc
 functions.zsh git.zsh history.zsh completion.zsh keybindings.zsh
-setup-plugins.zsh                 pins and (re)generates the plugin loader
-plugins/plugins.lock  plugins.txt pinned plugin revisions and bundle list
+setup-plugins.zsh                 pins Antidote, runs it, (re)generates the plugin loader
+plugins/plugins.txt               plugin bundle list with pinned revisions (pin:<sha>)
 mise/                             tool configs and lockfiles
 starship.toml  helix/*.toml        tool configs (helix config and languages)
 ```
