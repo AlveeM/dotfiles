@@ -1,5 +1,5 @@
 # Every entry must carry pin:<40-char sha>; setup-plugins.zsh refuses anything else.
-# To update: change the SHA, review the diff upstream, then run: zsh ~/.zsh/setup-plugins.zsh
+# To update: change the SHA, review the diff upstream, then run: zsh ~/.zsh/plugins/setup-plugins.zsh
 # zsh-defer is cloned implicitly for kind:defer; preset pins it without a second clone.
 preset:romkatv/zsh-defer pin:53a26e287fbbe2dcebb3aa1801546c6de32416fa
 zsh-users/zsh-completions kind:fpath path:src pin:6661b4b68173784ba31ef10ce4b5cb1c9ecfdcac

@@ -28,18 +28,18 @@ login_shell = "/bin/zsh"
 [dotfiles]
 "~/.zshrc"                            = { source = "zshrc" }
 "~/.zprofile"                         = { source = "zprofile" }
-"~/.gitconfig"                        = { source = "gitconfig" }
-"~/.config/starship.toml"             = { source = "starship.toml" }
-"~/.config/helix/config.toml"         = { source = "helix/config.toml" }
-"~/.config/helix/languages.toml"      = { source = "helix/languages.toml" }
-"~/.config/ghostty/config"            = { source = "ghostty/config" }
-"~/.config/mise/config.toml"          = { source = "mise/config.toml" }
-"~/.config/mise/config.personal.toml" = { source = "mise/config.personal.toml" }
-"~/.config/mise/config.work.toml"     = { source = "mise/config.work.toml" }
-"~/.config/mise/mise.lock"            = { source = "mise/mise.lock" }
-"~/.config/mise/mise.personal.lock"   = { source = "mise/mise.personal.lock" }  # written by `mise lock` for MISE_ENV=personal
+"~/.gitconfig"                        = { source = "config/gitconfig" }
+"~/.config/starship.toml"             = { source = "config/starship.toml" }
+"~/.config/helix/config.toml"         = { source = "config/helix/config.toml" }
+"~/.config/helix/languages.toml"      = { source = "config/helix/languages.toml" }
+"~/.config/ghostty/config"            = { source = "config/ghostty/config" }
+"~/.config/mise/config.toml"          = { source = "config/mise/config.toml" }
+"~/.config/mise/config.personal.toml" = { source = "config/mise/config.personal.toml" }
+"~/.config/mise/config.work.toml"     = { source = "config/mise/config.work.toml" }
+"~/.config/mise/mise.lock"            = { source = "config/mise/mise.lock" }
+"~/.config/mise/mise.personal.lock"   = { source = "config/mise/mise.personal.lock" }  # written by `mise lock` for MISE_ENV=personal
 
 # Runs on every `mise bootstrap`, so it must stay idempotent: setup-plugins.zsh
 # re-pins every plugin to the `pin:` SHA in plugins/plugins.txt.
 [tasks.bootstrap]
-run = "zsh ~/.zsh/setup-plugins.zsh"
+run = "zsh ~/.zsh/plugins/setup-plugins.zsh"
