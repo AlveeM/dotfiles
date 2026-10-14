@@ -32,6 +32,7 @@ login_shell = "/bin/zsh"
 "~/.config/starship.toml"             = { source = "starship.toml" }
 "~/.config/helix/config.toml"         = { source = "helix/config.toml" }
 "~/.config/helix/languages.toml"      = { source = "helix/languages.toml" }
+"~/.config/ghostty/config"            = { source = "ghostty/config" }
 "~/.config/mise/config.toml"          = { source = "mise/config.toml" }
 "~/.config/mise/config.personal.toml" = { source = "mise/config.personal.toml" }
 "~/.config/mise/config.work.toml"     = { source = "mise/config.work.toml" }
