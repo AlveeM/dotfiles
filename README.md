@@ -15,12 +15,12 @@ decide it should.
 
 ```sh
 # Personal machine (base tools + personal tools; persists MISE_ENV=personal)
-curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/v1/bootstrap.sh \
-  | sh -s -- personal 'https://github.com/<you>/dotfiles.git?ref=v1'
+curl -fsSL https://raw.githubusercontent.com/AlveeM/dotfiles/v1/bootstrap.sh \
+  | sh -s -- personal 'https://github.com/AlveeM/dotfiles.git?ref=v1'
 
 # Any other machine (base tools only)
-curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/v1/bootstrap.sh \
-  | sh -s -- 'https://github.com/<you>/dotfiles.git?ref=v1'
+curl -fsSL https://raw.githubusercontent.com/AlveeM/dotfiles/v1/bootstrap.sh \
+  | sh -s -- 'https://github.com/AlveeM/dotfiles.git?ref=v1'
 ```
 
 You are piping a script into `sh`: read `bootstrap.sh` first, and keep the tag pinned.
