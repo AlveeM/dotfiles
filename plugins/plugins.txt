@@ -6,3 +6,4 @@ zsh-users/zsh-completions kind:fpath path:src pin:6661b4b68173784ba31ef10ce4b5cb
 zsh-users/zsh-autosuggestions kind:defer pin:85919cd1ffa7d2d5412f6d3fe437ebdbeeec4fc5
 zsh-users/zsh-syntax-highlighting kind:defer pin:1d85c692615a25fe2293bdd44b34c217d5d2bf04
 zsh-users/zsh-history-substring-search kind:defer pin:14c8d2e0ffaee98f2df9850b19944f32546fdea5
+olets/zsh-abbr kind:defer pin:889f4772c12b9dbe4965bbd56f2572af0a28fa3b

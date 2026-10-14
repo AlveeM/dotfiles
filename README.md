@@ -133,7 +133,7 @@ mise.toml  mise.personal.toml     bootstrap project and personal-only settings
 bootstrap.sh                      installs prerequisites and mise, then runs mise bootstrap
 zshrc  zprofile                   deployed to $HOME; zshrc sources zsh.d/ in a fixed order
 zsh.d/                            shell modules: path exports history aliases functions git
-                                  completion keybindings
+                                  abbreviations completion keybindings
 plugins/                          plugins.txt (pinned revisions, pin:<sha>) and
                                   setup-plugins.zsh (pins Antidote, regenerates the loader)
 config/                           deployed to $HOME / ~/.config by [dotfiles] in mise.toml

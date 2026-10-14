@@ -24,23 +24,8 @@ gcur() {
 }
 
 # ================================================================================
-# Core git operations
-# ================================================================================
-alias gs='git status'                    # Show working tree status
-alias gd='git diff'                      # Show unstaged changes
-alias gdc='git diff --cached'            # Show staged changes
-alias gap='git add -p'                   # Interactively stage changes
-alias gaa='git add -A'                   # Stage all changes (new, modified, deleted)
-
-# ================================================================================
 # Commit & history
 # ================================================================================
-alias gc='git commit'                    # Create a commit
-alias gca='git commit --amend --no-edit' # Amend last commit without changing message
-alias gfix='git commit --fixup'          # Create fixup commit for interactive rebase
-alias gl='git log --oneline -10'         # Recent commits
-alias gla='git log --oneline --all -10'  # All branches
-alias gg='git log --graph --oneline --decorate --all'  # Show commit graph for all branches
 
 # Quick commit with message
 gcm() {
@@ -50,10 +35,6 @@ gcm() {
 # ================================================================================
 # Branch management
 # ================================================================================
-alias gco='git checkout'                 # Switch branches or restore files
-alias gsw='git switch'                   # Switch branches (modern alternative)
-alias gbc='git switch -c'                # Create and switch to new branch
-alias gb='git branch -vv'                # List branches with tracking info
 # requires fzf
 # Remove the old alias when this module is re-sourced in an existing shell.
 unalias gbf 2>/dev/null
@@ -64,7 +45,6 @@ function gbf {
     [[ -n $branch ]] || return 1
     git switch -- "$branch"
 }
-alias glf='git log --oneline | fzf'                     # Browse commit history interactively
 
 # Delete branches interactively (fzf multi-select), with confirmation
 gbd() {
@@ -105,7 +85,6 @@ gcb() {
 # ================================================================================
 # Remote operations - syncing with remote repositories
 # ================================================================================
-alias gpr='git pull --rebase'            # Pull and rebase instead of merge
 
 # Fetches the current branch from origin with pruning and error handling
 gf() {
@@ -166,10 +145,6 @@ gpf() {
 # ================================================================================
 # Advanced workflows - rebasing, stashing, and interactive operations
 # ================================================================================
-alias gcp='git cherry-pick'              # Apply commits from other branches
-alias gsq='git rebase -i --autosquash'   # Interactive rebase with automatic squashing
-alias gst='git stash'
-alias gpop='git stash pop'
 
 # Interactive rebase helper
 gri() {
@@ -202,9 +177,6 @@ gcr() {
 # ================================================================================
 # Reset & undo operations - undoing changes (use with caution)
 # ================================================================================
-alias gundo='git reset --soft HEAD~1'    # Undo last commit, keep changes staged
-alias grh='git reset HEAD~1'             # Undo last commit, keep changes unstaged
-alias greset='git reset --hard HEAD'     # Reset to last commit, discard all changes
 
 # Intentional reset workflow: stash tracked/untracked changes, excluding ignored
 # files. No backup branch is created; discarded commits may require the reflog.

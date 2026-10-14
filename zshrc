@@ -51,6 +51,11 @@ else
   print -u2 -- 'zsh: plugins unavailable; run zsh ~/.zsh/plugins/setup-plugins.zsh'
 fi
 
+# Queue abbreviations after the deferred zsh-abbr plugin.
+if (( $+functions[zsh-defer] )); then
+  zsh-defer _zsh_source_required "$HOME/.zsh/zsh.d/abbreviations.zsh"
+fi
+
 # Queue bindings after the deferred history search plugin.
 if (( $+functions[zsh-defer] )); then
   zsh-defer _zsh_source_required "$HOME/.zsh/zsh.d/keybindings.zsh"
