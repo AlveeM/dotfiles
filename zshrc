@@ -16,14 +16,14 @@ _zsh_source_required() {
 
 # Establish PATH and environment before initializing tools.
 for _zsh_config in path exports history aliases functions git; do
-  _zsh_source_required "$HOME/.zsh/$_zsh_config.zsh"
+  _zsh_source_required "$HOME/.zsh/zsh.d/$_zsh_config.zsh"
 done
 unset _zsh_config
 
 # Work-only additions (written by the internal work dotfiles repo); absent on other machines.
 [[ -r "$HOME/.zshrc.work" ]] && source "$HOME/.zshrc.work"
 
-# Install/update pinned plugins explicitly: zsh ~/.zsh/setup-plugins.zsh
+# Install/update pinned plugins explicitly: zsh ~/.zsh/plugins/setup-plugins.zsh
 # Edit plugins.txt or plugins.lock, then run setup to regenerate plugins.zsh.
 # The generated plugins.zsh is static; only setup needs Antidote itself.
 if [[ -r "$HOME/.zsh/plugins/plugins.zsh" ]]; then
@@ -46,16 +46,16 @@ if [[ -r "$HOME/.zsh/plugins/plugins.zsh" ]]; then
       zsh-defer() { _zsh_config_original_defer -2 "$@"; }
     fi
   fi
-  source "$HOME/.zsh/plugins/plugins.zsh" || print -u2 -- 'zsh: plugin loading failed; run zsh ~/.zsh/setup-plugins.zsh'
+  source "$HOME/.zsh/plugins/plugins.zsh" || print -u2 -- 'zsh: plugin loading failed; run zsh ~/.zsh/plugins/setup-plugins.zsh'
 else
-  print -u2 -- 'zsh: plugins unavailable; run zsh ~/.zsh/setup-plugins.zsh'
+  print -u2 -- 'zsh: plugins unavailable; run zsh ~/.zsh/plugins/setup-plugins.zsh'
 fi
 
 # Queue bindings after the deferred history search plugin.
 if (( $+functions[zsh-defer] )); then
-  zsh-defer _zsh_source_required "$HOME/.zsh/keybindings.zsh"
+  zsh-defer _zsh_source_required "$HOME/.zsh/zsh.d/keybindings.zsh"
 elif (( $+functions[history-substring-search-up] )); then
-  _zsh_source_required "$HOME/.zsh/keybindings.zsh"
+  _zsh_source_required "$HOME/.zsh/zsh.d/keybindings.zsh"
 fi
 
 # Completion runs after plugins add their directories to fpath.
@@ -63,7 +63,7 @@ if (( $+functions[_zsh_config_original_defer] )); then
   functions[zsh-defer]=$functions[_zsh_config_original_defer]
   unfunction _zsh_config_original_defer
 fi
-_zsh_source_required "$HOME/.zsh/completion.zsh"
+_zsh_source_required "$HOME/.zsh/zsh.d/completion.zsh"
 
 # Cache generated init code, regenerating when the resolved binary changes
 # (e.g. a Homebrew upgrade). Sets REPLY to the cache file; callers source it

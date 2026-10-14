@@ -8,8 +8,7 @@ setopt err_exit pipefail extendedglob
 antidote_url=https://github.com/mattmc3/antidote.git
 antidote_sha=9bb69ab99c6f05d6e6ae237f7ce222eeeb5b4a14 # v2.3.0
 
-setup_root=${0:A:h}
-setup_plugins="$setup_root/plugins"
+setup_plugins=${0:A:h}
 setup_lock="$setup_plugins/.setup-lock"
 setup_temp=''
 if ! mkdir "$setup_lock" 2>/dev/null; then

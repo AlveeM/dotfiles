@@ -53,7 +53,7 @@ Defined in [`mise.toml`](mise.toml), in mise's own order:
 2. **dotfiles**: symlinks from `$HOME` into this repo (see the table below).
 3. **user**: sets the login shell to `/bin/zsh` (takes effect at the next login).
 4. **tools**: installs the mise tools.
-5. **task**: runs `setup-plugins.zsh`, which has Antidote check out every zsh plugin at the
+5. **task**: runs `plugins/setup-plugins.zsh`, which has Antidote check out every zsh plugin at the
    `pin:` commit in `plugins/plugins.txt` and regenerates the plugin loader.
 
 Re-running is safe: parts that already match are left alone.
@@ -62,15 +62,15 @@ Re-running is safe: parts that already match are left alone.
 |---|---|
 | `~/.zshrc` | `zshrc` |
 | `~/.zprofile` | `zprofile` |
-| `~/.gitconfig` | `gitconfig` |
-| `~/.config/starship.toml` | `starship.toml` |
-| `~/.config/helix/config.toml` | `helix/config.toml` |
-| `~/.config/helix/languages.toml` | `helix/languages.toml` |
-| `~/.config/mise/config.toml` | `mise/config.toml` |
-| `~/.config/mise/config.personal.toml` | `mise/config.personal.toml` |
-| `~/.config/mise/config.work.toml` | `mise/config.work.toml` |
-| `~/.config/mise/mise.lock` | `mise/mise.lock` |
-| `~/.config/mise/mise.personal.lock` | `mise/mise.personal.lock` |
+| `~/.gitconfig` | `config/gitconfig` |
+| `~/.config/starship.toml` | `config/starship.toml` |
+| `~/.config/helix/config.toml` | `config/helix/config.toml` |
+| `~/.config/helix/languages.toml` | `config/helix/languages.toml` |
+| `~/.config/mise/config.toml` | `config/mise/config.toml` |
+| `~/.config/mise/config.personal.toml` | `config/mise/config.personal.toml` |
+| `~/.config/mise/config.work.toml` | `config/mise/config.work.toml` |
+| `~/.config/mise/mise.lock` | `config/mise/mise.lock` |
+| `~/.config/mise/mise.personal.lock` | `config/mise/mise.personal.lock` |
 
 If a real file is already where a symlink should go, the run stops and lists the
 conflicts. Move or review the file, then re-run with `--force-dotfiles` only if you are
@@ -80,9 +80,9 @@ sure you want it replaced.
 
 | Environment | Tools |
 |---|---|
-| none (default) | the base tools in `mise/config.toml`: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix |
-| `personal` | base + `mise/config.personal.toml` (language runtimes, Kubernetes tools, and other personal CLIs) |
-| `work` | base + `mise/config.work.toml` (currently empty) |
+| none (default) | the base tools in `config/mise/config.toml`: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix |
+| `personal` | base + `config/mise/config.personal.toml` (language runtimes, Kubernetes tools, and other personal CLIs) |
+| `work` | base + `config/mise/config.work.toml` (currently empty) |
 
 `mise -E personal bootstrap ...` on the first run writes `export MISE_ENV=personal` into
 `~/.zshenv` (via `mise.personal.toml`), so later shells and plain `mise` commands keep using
@@ -120,7 +120,7 @@ Headless servers do not need it: the font belongs to the terminal you connect fr
 ## Updating
 
 - **Plugins:** change the `pin:` commit in `plugins/plugins.txt`, review the diff upstream, then
-  `zsh ~/.zsh/setup-plugins.zsh` and open a new shell. Nothing updates on its own.
+  `zsh ~/.zsh/plugins/setup-plugins.zsh` and open a new shell. Nothing updates on its own.
 - **Tool versions:** `MISE_ENV=personal mise lock --global --platform macos-arm64,linux-x64,linux-arm64`
   refreshes both lockfiles; commit them.
 - **apt packages:** `mise bootstrap packages upgrade`.
@@ -131,13 +131,15 @@ Headless servers do not need it: the font belongs to the terminal you connect fr
 ```
 mise.toml  mise.personal.toml     bootstrap project and personal-only settings
 bootstrap.sh                      installs prerequisites and mise, then runs mise bootstrap
-zshrc  zprofile  gitconfig        deployed to $HOME
-aliases.zsh exports.zsh path.zsh  shell config, sourced by zshrc
-functions.zsh git.zsh history.zsh completion.zsh keybindings.zsh
-setup-plugins.zsh                 pins Antidote, runs it, (re)generates the plugin loader
-plugins/plugins.txt               plugin bundle list with pinned revisions (pin:<sha>)
-mise/                             tool configs and lockfiles
-starship.toml  helix/*.toml        tool configs (helix config and languages)
+zshrc  zprofile                   deployed to $HOME; zshrc sources zsh.d/ in a fixed order
+zsh.d/                            shell modules: path exports history aliases functions git
+                                  completion keybindings
+plugins/                          plugins.txt (pinned revisions, pin:<sha>) and
+                                  setup-plugins.zsh (pins Antidote, regenerates the loader)
+config/                           deployed to $HOME / ~/.config by [dotfiles] in mise.toml
+  gitconfig  starship.toml        git and prompt config
+  helix/  ghostty/                editor and terminal config
+  mise/                           tool configs and lockfiles
 ```
 
 Ignored (recreated by setup): `plugins/antidote/`, `plugins/plugins.zsh`, `*.zwc`.
@@ -153,5 +155,5 @@ Docker, `gcloud`, `conda`, other GUI apps, and `~/.ssh`. Install those separatel
   mise tools are pinned in the lockfiles.
 - Anything pushed here is public. Keep names, emails, hostnames and tokens out of it: use
   the machine-local files above.
-- Applying this repo runs code defined in `mise.toml` and `setup-plugins.zsh`. Review
+- Applying this repo runs code defined in `mise.toml` and `plugins/setup-plugins.zsh`. Review
   changes before updating a machine, and pin `?ref=` to a tag you have reviewed.
