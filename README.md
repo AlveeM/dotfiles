@@ -142,6 +142,8 @@ The fzf helpers live in `zsh.d/functions.zsh`:
 | `cdf [dir]` | pick a directory (tree preview) and `cd` into it |
 | `fe [dir]` | pick a file (syntax-highlighted preview) and open it in `$EDITOR` |
 | `fcd [dir]` | pick a file and `cd` into the directory containing it |
+| `copyfile <file>` | copy a file's contents to the clipboard |
+| `copypath [path]` | copy an absolute path to the clipboard (default: `$PWD`) |
 
 `zsh.d/lazy-tools.zsh` loads `conda` and `gcloud` on first use when they are installed.
 

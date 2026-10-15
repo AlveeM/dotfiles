@@ -51,3 +51,29 @@ fcd() {
   local file
   _zsh_fzf_pick f $_zsh_file_preview $1 | IFS= read -r -d '' file && [[ -n $file ]] && builtin cd -- "${file:h}"
 }
+
+# Copy stdin to the system clipboard.
+_zsh_clip() {
+  if (( $+commands[pbcopy] )); then pbcopy
+  elif (( $+commands[wl-copy] )); then wl-copy
+  elif (( $+commands[xclip] )); then xclip -selection clipboard
+  else print -u2 -- 'no clipboard command found'; return 1
+  fi
+}
+
+# Copy a file's contents to the clipboard.
+# Usage: copyfile <file>
+copyfile() {
+  emulate -L zsh
+  (( $# == 1 )) || { print -u2 -- 'usage: copyfile <file>'; return 1; }
+  [[ -f $1 ]] || { print -u2 -- "copyfile: not a file: $1"; return 1; }
+  _zsh_clip < $1
+}
+
+# Copy an absolute path to the clipboard (defaults to $PWD).
+# Usage: copypath [path]
+copypath() {
+  emulate -L zsh
+  (( $# <= 1 )) || { print -u2 -- 'usage: copypath [path]'; return 1; }
+  print -rn -- ${${1:-$PWD}:A} | _zsh_clip
+}
