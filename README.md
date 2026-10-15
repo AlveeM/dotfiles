@@ -6,9 +6,9 @@ system packages, CLI tools, and symlinks the config files into place.
 
 - Shell: zsh with pinned plugins (zsh-defer, completions, autosuggestions, syntax highlighting,
   history substring search, zsh-abbr); no installs or network access at shell startup.
-- Tools: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix, gh, and the markdown language servers
+- Tools: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix, tmux, zellij, gh, and the markdown language servers
   Helix uses (installed by mise).
-- Config: `.zshrc`, `.zprofile`, `.gitconfig`, starship, helix, ghostty, mise.
+- Config: `.zshrc`, `.zprofile`, `.gitconfig`, starship, helix, ghostty, tmux, zellij, mise.
 
 ## Quick start
 
@@ -73,6 +73,8 @@ Re-running is safe: parts that already match are left alone.
 | `~/.config/helix/config.toml` | `config/helix/config.toml` |
 | `~/.config/helix/languages.toml` | `config/helix/languages.toml` |
 | `~/.config/ghostty/config` | `config/ghostty/config` |
+| `~/.config/tmux/tmux.conf` | `config/tmux/tmux.conf` |
+| `~/.config/zellij/config.kdl` | `config/zellij/config.kdl` |
 | `~/.config/mise/config.toml` | `config/mise/config.toml` |
 | `~/.config/mise/config.personal.toml` | `config/mise/config.personal.toml` |
 | `~/.config/mise/config.work.toml` | `config/mise/config.work.toml` |
@@ -86,7 +88,7 @@ sure you want it replaced.
 
 | Environment | Tools |
 |---|---|
-| none (default) | the base tools in `config/mise/config.toml`: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix, gh, markdown language servers |
+| none (default) | the base tools in `config/mise/config.toml`: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix, tmux, zellij, gh, markdown language servers |
 | `personal` | base + `config/mise/config.personal.toml` (language runtimes, Kubernetes tools, prettier, and other personal CLIs) |
 | `work` | base + `config/mise/config.work.toml` (currently empty) |
 
