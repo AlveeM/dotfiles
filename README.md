@@ -131,9 +131,19 @@ Git functions live in `zsh.d/git.zsh`. Anything that discards work asks for conf
 | `gpurge` / `gpurgef` | delete local branches whose upstream is gone (`-d` / `-D`, the latter confirms) |
 
 `zsh.d/abbreviations.zsh` defines the short git abbreviations (zsh-abbr; `abbr -S list` shows them, and the file header explains
-the three scopes), and `zsh.d/functions.zsh`
-the fzf helpers `fsearch`, `cdf`, `fe` and `fcd`. `zsh.d/lazy-tools.zsh` loads `conda` and `gcloud`
-on first use when they are installed.
+the three scopes). An expansion puts the cursor at its first `%` marker; press `Alt-;`
+(`zsh.d/keybindings.zsh`) to jump to the next marker and delete it.
+
+The fzf helpers live in `zsh.d/functions.zsh`:
+
+| Command | Does |
+|---|---|
+| `fsearch <pattern> [path ...]` | ripgrep once, then fuzzy-filter the matching lines |
+| `cdf [dir]` | pick a directory (tree preview) and `cd` into it |
+| `fe [dir]` | pick a file (syntax-highlighted preview) and open it in `$EDITOR` |
+| `fcd [dir]` | pick a file and `cd` into the directory containing it |
+
+`zsh.d/lazy-tools.zsh` loads `conda` and `gcloud` on first use when they are installed.
 
 ## Fonts
 
@@ -172,6 +182,7 @@ plugins/                          plugins.txt (pinned revisions, pin:<sha>) and
 config/                           deployed to $HOME / ~/.config by [dotfiles] in mise.toml
   gitconfig  starship.toml        git and prompt config
   helix/  ghostty/                editor and terminal config
+  tmux/  zellij/                  terminal multiplexer config
   mise/                           tool configs and lockfiles
 ```
 
