@@ -139,7 +139,7 @@ mise.toml  mise.personal.toml     bootstrap project and per-env settings
 mise.work.toml
 bootstrap.sh                      installs prerequisites and mise, then runs mise bootstrap
 zshrc  zprofile                   deployed to $HOME; zshrc sources zsh.d/ in a fixed order
-zsh.d/                            shell modules: path exports history aliases functions git
+zsh.d/                            shell modules: path lazy-tools exports history aliases functions git
                                   abbreviations completion keybindings
 plugins/                          plugins.txt (pinned revisions, pin:<sha>) and
                                   setup-plugins.zsh (pins Antidote, regenerates the loader)

@@ -15,7 +15,7 @@ _zsh_source_required() {
 }
 
 # Establish PATH and environment before initializing tools.
-for _zsh_config in path exports history aliases functions git; do
+for _zsh_config in path lazy-tools exports history aliases functions git; do
   _zsh_source_required "$HOME/.zsh/zsh.d/$_zsh_config.zsh"
 done
 unset _zsh_config
@@ -32,13 +32,10 @@ else
   print -u2 -- 'zsh: plugins unavailable; run zsh ~/.zsh/plugins/setup-plugins.zsh'
 fi
 
-# Queue abbreviations after the deferred zsh-abbr plugin.
+# Queue abbreviations and bindings after the deferred plugins they depend on
+# (zsh-abbr, history substring search).
 if (( $+functions[zsh-defer] )); then
   zsh-defer _zsh_source_required "$HOME/.zsh/zsh.d/abbreviations.zsh"
-fi
-
-# Queue bindings after the deferred history search plugin.
-if (( $+functions[zsh-defer] )); then
   zsh-defer _zsh_source_required "$HOME/.zsh/zsh.d/keybindings.zsh"
 elif (( $+functions[history-substring-search-up] )); then
   _zsh_source_required "$HOME/.zsh/zsh.d/keybindings.zsh"
