@@ -28,7 +28,7 @@ cdf() {
   emulate -L zsh
   (( $# <= 1 )) || { print -u2 -- 'usage: cdf [directory]'; return 1; }
   local dir
-  IFS= read -r -d '' dir < <(_zsh_fzf_pick d $_zsh_dir_preview $1) && [[ -n $dir ]] && builtin cd -- "$dir"
+  _zsh_fzf_pick d $_zsh_dir_preview $1 | IFS= read -r -d '' dir && [[ -n $dir ]] && builtin cd -- "$dir"
 }
 
 # Fuzzy-pick a file (with a syntax-highlighted preview) and open it in $EDITOR.
@@ -40,7 +40,7 @@ fe() {
   local -a editor
   editor=( ${(z)${EDITOR:-vi}} )
   editor=( "${(@Q)editor}" )
-  IFS= read -r -d '' file < <(_zsh_fzf_pick f $_zsh_file_preview $1) && [[ -n $file ]] && command "${editor[@]}" -- "$file"
+  _zsh_fzf_pick f $_zsh_file_preview $1 | IFS= read -r -d '' file && [[ -n $file ]] && command "${editor[@]}" -- "$file"
 }
 
 # Fuzzy-pick a file (with a preview) and cd into the directory containing it.
@@ -49,5 +49,5 @@ fcd() {
   emulate -L zsh
   (( $# <= 1 )) || { print -u2 -- 'usage: fcd [directory]'; return 1; }
   local file
-  IFS= read -r -d '' file < <(_zsh_fzf_pick f $_zsh_file_preview $1) && [[ -n $file ]] && builtin cd -- "${file:h}"
+  _zsh_fzf_pick f $_zsh_file_preview $1 | IFS= read -r -d '' file && [[ -n $file ]] && builtin cd -- "${file:h}"
 }
