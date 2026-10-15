@@ -33,7 +33,7 @@ minikube = "latest"
 kubectx = "latest"
 kubens = "latest"
 
-# Misc CLIs — hugo is the extended build.
+# Misc CLIs
 flyctl = "latest"
 hugo-extended = "latest"
 uv = "latest"
