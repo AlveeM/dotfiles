@@ -4,10 +4,11 @@ My zsh setup for macOS and Ubuntu. The repo lives at `~/.zsh` and is a
 [mise bootstrap project](https://mise.jdx.dev/bootstrap.html): one command installs the
 system packages, CLI tools, and symlinks the config files into place.
 
-- Shell: zsh with pinned plugins (no installs or network access at shell startup).
+- Shell: zsh with pinned plugins (zsh-defer, completions, autosuggestions, syntax highlighting,
+  history substring search, zsh-abbr); no installs or network access at shell startup.
 - Tools: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix, gh, and the markdown language servers
   Helix uses (installed by mise).
-- Config: `.zshrc`, `.zprofile`, `.gitconfig`, starship, helix, mise.
+- Config: `.zshrc`, `.zprofile`, `.gitconfig`, starship, helix, ghostty, mise.
 
 ## Quick start
 
@@ -71,6 +72,7 @@ Re-running is safe: parts that already match are left alone.
 | `~/.config/starship.toml` | `config/starship.toml` |
 | `~/.config/helix/config.toml` | `config/helix/config.toml` |
 | `~/.config/helix/languages.toml` | `config/helix/languages.toml` |
+| `~/.config/ghostty/config` | `config/ghostty/config` |
 | `~/.config/mise/config.toml` | `config/mise/config.toml` |
 | `~/.config/mise/config.personal.toml` | `config/mise/config.personal.toml` |
 | `~/.config/mise/config.work.toml` | `config/mise/config.work.toml` |
@@ -108,6 +110,27 @@ Create `~/.gitconfig.local` on each new machine:
 	name = Your Name
 	email = you@example.com
 ```
+
+## Shell helpers
+
+Git functions live in `zsh.d/git.zsh`. Anything that discards work asks for confirmation first.
+
+| Command | Does |
+|---|---|
+| `gm` | switch to the default branch (resolved from `origin/HEAD`) |
+| `gcb <name>` | create and switch to `<user>/<name>` |
+| `gbf` / `gbd` | fzf branch switch / multi-select force delete |
+| `gf` / `gdm` | fetch the current branch / diff against `origin/<main>` |
+| `grm` / `gcr <n>` | rebase onto `origin/<main>` / move the last `n` commits onto it |
+| `gpu` | push and open a draft PR (refuses from the main branch) |
+| `gpf` | force push with a lease (confirms) |
+| `gsync` | stash everything, then reset to `origin/<branch>` (confirms) |
+| `gdr <branch>` | delete a remote branch (confirms) |
+| `gpurge` / `gpurgef` | delete local branches whose upstream is gone (`-d` / `-D`, the latter confirms) |
+
+`zsh.d/abbreviations.zsh` defines the short git abbreviations (zsh-abbr), and `zsh.d/functions.zsh`
+the fzf helpers `fsearch`, `cdf`, `fe` and `fcd`. `zsh.d/lazy-tools.zsh` loads `conda` and `gcloud`
+on first use when they are installed.
 
 ## Fonts
 
@@ -149,12 +172,14 @@ config/                           deployed to $HOME / ~/.config by [dotfiles] in
   mise/                           tool configs and lockfiles
 ```
 
-Ignored (recreated by setup): `plugins/antidote/`, `plugins/plugins.zsh`, `*.zwc`.
+Ignored (recreated by setup): `plugins/antidote/`, `plugins/plugins.zsh`, `*.zwc`, `.mise/`,
+`config/mise/mise.personal.lock`.
 Plugin checkouts live in `~/.cache/antidote`.
 
 ## Not handled
 
-Docker, `gcloud`, `conda`, other GUI apps, and `~/.ssh`. Install those separately.
+Docker, `gcloud`, `conda`, other GUI apps, and `~/.ssh` are not managed. Install those separately;
+the shell config only picks up `conda` and `gcloud` if they exist.
 
 ## Security notes
 
