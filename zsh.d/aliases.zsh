@@ -16,15 +16,15 @@ alias l='eza -lBF --git'
 # Long list of directories only, sorted by last modified, with git info
 alias llm='eza -lBD --git --sort=modified'
 # Detailed long list of all files (incl. hidden), human sizes, ISO time, git info, color scale
-alias la='eza -lbhHigUmuSa --time-style=long-iso --git --color-scale'
+alias la='eza -lbhHigUmuSa --time-style=long-iso --git --color-scale=all'
 # Same as 'la' but also show extended attributes/ACL info
-alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale'
+alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale=all'
 
 # ---- specialty views ----
 # One file per line
 alias lS='eza -1 --icons --group-directories-first'
 # Tree view (1 level deep)
-alias lt='eza --tree --level=1 --group-directories-first --icons'
+alias lt='eza --tree --level=1 --group-directories-first --icons=auto'
 # Show only hidden (dot) files, avoiding color escape sequences
 _zsh_list_hidden() {
   emulate -L zsh
