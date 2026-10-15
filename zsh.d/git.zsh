@@ -23,6 +23,23 @@ _zsh_git_branch() {
   }
 }
 
+# Prompt for confirmation; succeeds only on y/Y.
+_zsh_confirm() {
+  local reply
+  read -r 'reply?Continue? [y/N] ' || return 1
+  [[ $reply == [Yy] ]]
+}
+
+# Fetch origin's main branch into its remote-tracking ref: _zsh_git_fetch_main <main>
+_zsh_git_fetch_main() {
+  git fetch origin "+refs/heads/$1:refs/remotes/origin/$1"
+}
+
+# Abort unless HEAD is still on <branch> (guards against changes during a prompt).
+_zsh_git_still_on() {
+  [[ $(_zsh_git_branch) == $1 ]] || { print -u2 -- 'Branch changed; aborting.'; return 1; }
+}
+
 # ================================================================================
 # Branch management
 # ================================================================================
@@ -40,14 +57,13 @@ gbf() {
 # Delete branches interactively (fzf multi-select), with confirmation
 gbd() {
   emulate -L zsh -o pipefail
-  local selection reply
+  local selection
   local -a branches
   selection=$(git branch --format='%(refname:short)' | fzf --multi) || return
   [[ -n $selection ]] || return 1
   branches=( "${(@f)selection}" )
   print -r -- "⚠️ Force deleting: ${(j: :)branches}"
-  read -r 'reply?Continue? [y/N] ' || return 1
-  [[ $reply == [Yy] ]] || return 1
+  _zsh_confirm || return 1
   git branch -D -- "${branches[@]}"
 }
 
@@ -91,7 +107,7 @@ gf() {
 gdm() {
   local main
   main=$(_zsh_git_main) || return 1
-  git fetch origin "+refs/heads/$main:refs/remotes/origin/$main" &&
+  _zsh_git_fetch_main "$main" &&
     git diff "origin/$main" --
 }
 
@@ -110,7 +126,7 @@ gpu() {
 # Push one explicit upstream ref, with a lease captured before confirmation.
 gpf() {
   emulate -L zsh
-  local b current reply upstream remote destination tracking expected head
+  local b upstream remote destination tracking expected head
   local -a fields
   b=$(_zsh_git_branch) || return 1
   upstream=$(git for-each-ref --format='%(upstream:remotename)%09%(upstream:remoteref)%09%(upstream)' "refs/heads/$b") || return 1
@@ -126,10 +142,8 @@ gpf() {
   head=$(git rev-parse --verify "refs/heads/$b^{commit}") || return 1
   print -r -- "⚠️ Force pushing $b to $remote/${destination#refs/heads/}"
   print -r -- "Expected destination commit: $expected"
-  read -r 'reply?Continue? [y/N] ' || return 1
-  [[ $reply == [Yy] ]] || return 1
-  current=$(_zsh_git_branch) || return 1
-  [[ $current == $b ]] || { print -u2 -- 'Branch changed; aborting.'; return 1; }
+  _zsh_confirm || return 1
+  _zsh_git_still_on "$b" || return 1
   git push "--force-with-lease=$destination:$expected" -- "$remote" "$head:$destination"
 }
 
@@ -142,7 +156,7 @@ grm() {
   local main cur
   main=$(_zsh_git_main) || return 1
   cur=$(_zsh_git_branch) || return 1
-  git fetch origin "+refs/heads/$main:refs/remotes/origin/$main" &&
+  _zsh_git_fetch_main "$main" &&
     git rebase "origin/$main" "$cur"
 }
 
@@ -153,7 +167,7 @@ gcr() {
   main=$(_zsh_git_main) || return 1
   cur=$(_zsh_git_branch) || return 1
   git rev-parse --verify "$cur~$n^{commit}" >/dev/null || return 1
-  git fetch origin "+refs/heads/$main:refs/remotes/origin/$main" &&
+  _zsh_git_fetch_main "$main" &&
     git rebase --onto "origin/$main" "$cur~$n" "$cur"
 }
 
@@ -164,22 +178,19 @@ gcr() {
 # Intentional reset workflow: stash tracked/untracked changes, excluding ignored
 # files. No backup branch is created; discarded commits may require the reflog.
 gsync() {
-  local b current reply
+  local b
   b=$(_zsh_git_branch) || return 1
   print -r -- "⚠️ This will reset branch '$b' to origin/$b after stashing tracked and untracked changes."
   print -r -- 'Ignored files are not backed up and may be overwritten by incoming tracked paths.'
   print -r -- 'No backup branch is created; discarded unpushed commits may require reflog recovery.'
-  read -r 'reply?Continue? [y/N] ' || return 1
-  [[ $reply == [Yy] ]] || return 1
-  current=$(_zsh_git_branch) || return 1
-  [[ $current == $b ]] || { print -u2 -- 'Branch changed; aborting.'; return 1; }
+  _zsh_confirm || return 1
+  _zsh_git_still_on "$b" || return 1
   git fetch --prune origin "+refs/heads/$b:refs/remotes/origin/$b" || return 1
   git stash push --include-untracked -m "gsync backup $(date)" || {
     print -u2 -- 'Backup failed; aborting reset.'
     return 1
   }
-  current=$(_zsh_git_branch) || return 1
-  [[ $current == $b ]] || { print -u2 -- 'Branch changed; aborting reset.'; return 1; }
+  _zsh_git_still_on "$b" || return 1
   git reset --hard "origin/$b"
 }
 
@@ -190,10 +201,9 @@ gsync() {
 gdr() {
   emulate -L zsh
   [[ $# == 1 && -n $1 && $1 != -* ]] || { print -u2 -- 'usage: gdr <branch>'; return 1; }
-  local b=$1 reply
+  local b=$1
   print -r -- "⚠️ Deleting remote branch '$b'"
-  read -r 'reply?Continue? [y/N] ' || return 1
-  [[ $reply == [Yy] ]] || return 1
+  _zsh_confirm || return 1
   git push origin --delete -- "refs/heads/$b"
 }
 
@@ -209,10 +219,8 @@ _zsh_prune_gone_branches() {
   done <<< "$listing"
   (( $#branches )) || return 0
   if [[ $mode == -D ]]; then
-    local reply
     print -r -- "⚠️ Force deleting branches (may lose unmerged work): ${(j: :)branches}"
-    read -r 'reply?Continue? [y/N] ' || return 1
-    [[ $reply == [Yy] ]] || return 1
+    _zsh_confirm || return 1
   fi
   git branch "$mode" -- "${branches[@]}"
 }
