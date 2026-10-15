@@ -171,20 +171,34 @@ Headless servers do not need it: the font belongs to the terminal you connect fr
 ## Layout
 
 ```
-mise.toml  mise.personal.toml     bootstrap project and per-env settings
-mise.work.toml
-bootstrap.sh                      installs prerequisites and mise, then runs mise bootstrap
-zshrc  zprofile                   deployed to $HOME; zshrc sources zsh.d/ in a fixed order
-zsh.d/                            shell modules: path lazy-tools exports history aliases functions git
-                                  abbreviations completion keybindings
-plugins/                          plugins.txt (pinned revisions, pin:<sha>) and
-                                  setup-plugins.zsh (pins Antidote, regenerates the loader)
-config/                           deployed to $HOME / ~/.config by [dotfiles] in mise.toml
-  gitconfig  starship.toml        git and prompt config
-  helix/  ghostty/                editor and terminal config
-  tmux/  zellij/                  terminal multiplexer config
-  mise/                           tool configs and lockfiles
+~/.zsh
+├── bootstrap.sh          # installs prerequisites and mise, then runs mise bootstrap
+├── mise.toml             # bootstrap project
+├── mise.personal.toml    # per-env settings
+├── mise.work.toml
+├── zshrc                 # deployed to $HOME; sources zsh.d/ in a fixed order
+├── zprofile
+├── zsh.d/                # shell modules (see load order below)
+│   └── *.zsh
+├── plugins/
+│   ├── plugins.txt       # pinned revisions (pin:<sha>)
+│   └── setup-plugins.zsh # pins Antidote, regenerates the loader
+└── config/               # deployed to $HOME / ~/.config by [dotfiles] in mise.toml
+    ├── gitconfig
+    ├── starship.toml
+    ├── helix/            # editor
+    ├── ghostty/          # terminal
+    ├── tmux/             # multiplexer
+    ├── zellij/           # multiplexer
+    └── mise/             # tool configs and lockfiles
 ```
+
+`zshrc` loads the `zsh.d/` modules in this order:
+
+1. `path`, `lazy-tools`, `exports`, `history`, `aliases`, `functions`, `git`
+2. the pinned plugins (`plugins/plugins.zsh`)
+3. `abbreviations` and `keybindings` (deferred with zsh-defer when it is available)
+4. `completion`
 
 Ignored (recreated by setup): `plugins/antidote/`, `plugins/plugins.zsh`, `*.zwc`, `.mise/`,
 `config/mise/mise.personal.lock`.
