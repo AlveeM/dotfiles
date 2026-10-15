@@ -9,5 +9,6 @@ macos-option-as-alt = true
 
 font-family = "JetBrains Mono Nerd Font Mono"
 font-size = 20
+font-feature = -calt, -liga, -dlig
 
 theme = light:Catppuccin Mocha,dark:Catppuccin Mocha
