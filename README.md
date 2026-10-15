@@ -130,7 +130,8 @@ Git functions live in `zsh.d/git.zsh`. Anything that discards work asks for conf
 | `gdr <branch>` | delete a remote branch (confirms) |
 | `gpurge` / `gpurgef` | delete local branches whose upstream is gone (`-d` / `-D`, the latter confirms) |
 
-`zsh.d/abbreviations.zsh` defines the short git abbreviations (zsh-abbr), and `zsh.d/functions.zsh`
+`zsh.d/abbreviations.zsh` defines the short git abbreviations (zsh-abbr; `abbr -S list` shows them, and the file header explains
+the three scopes), and `zsh.d/functions.zsh`
 the fzf helpers `fsearch`, `cdf`, `fe` and `fcd`. `zsh.d/lazy-tools.zsh` loads `conda` and `gcloud`
 on first use when they are installed.
 
