@@ -1,7 +1,6 @@
 # Third-party plugin checkouts and generated loader (recreated by setup-plugins.zsh)
 plugins/antidote/
 plugins/plugins.zsh
-plugins/plugins.zsh.zwc
 plugins/plugins.zsh.*
 plugins/.setup-lock
 *.zwc
@@ -10,7 +9,6 @@ plugins/.setup-lock
 
 # mise install-lock scratch directories
 .mise/
-mise/.mise/
 
 # Machine-specific mise lockfile
 config/mise/mise.personal.lock
