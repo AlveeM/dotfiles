@@ -9,6 +9,7 @@
 #   abbr -S -g 'git <n>'=... only after `git`; used for everything else so names can't shadow commands
 (( $+functions[abbr] )) || { print -u2 -- 'zsh: abbr unavailable; skipping abbreviations'; return 1 }
 ABBR_QUIET=1
+ABBR_SET_EXPANSION_CURSOR=1                                     # Off by default; makes `%` place the cursor
 
 abbr -S g=git                                                   # Shorthand for git
 
