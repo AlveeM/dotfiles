@@ -16,7 +16,6 @@ abbr -S g=git
 abbr -S git aa="add --all"
 
 abbr -S git ch="checkout -b"
-abbr -S git cm="checkout main"
 abbr -S git co="checkout"
 
 abbr -S -g "git cp"="git cherry-pick"
@@ -43,8 +42,8 @@ abbr -S git arefactor='commit -am "refactor(%): %"'
 abbr -S git refactor='commit -m "refactor(%): %"'
 abbr -S git astyle='commit -am "style(%): %"'
 abbr -S git style='commit -m "style(%): %"'
-abbr -S git atests='commit -am "tests(%): %"'
-abbr -S git tests='commit -m "tests(%): %"'
+abbr -S git atest='commit -am "test(%): %"'
+abbr -S git test='commit -m "test(%): %"'
 
 abbr -S git d=diff
 
@@ -57,7 +56,6 @@ abbr -S merge='git merge'
 abbr -S pull="git pull"
 
 abbr -S git p=push
-abbr -S git pf='push --force-with-lease'
 abbr -S push="git push"
 
 abbr -S -g 'git r'='git rebase'
@@ -77,6 +75,7 @@ abbr -S git s=status
 
 # ================================================================================
 # Carried over from the old aliases: only those with no equivalent above.
+# Dropped: git pf, git cm, greset (unguarded; use gpf, gm, gsync).
 # Dropped as duplicates of defaults: gs->s gd->d gaa->aa gc->c gfix->f gco->co gcp->cp gpop->sp
 # ================================================================================
 abbr -S gap='git add -p'                               # Interactively stage changes
@@ -89,4 +88,3 @@ abbr -S gb='git branch -vv'                            # List branches with trac
 abbr -S gsq='git rebase -i --autosquash'               # Interactive rebase with automatic squashing
 abbr -S gundo='git reset --soft HEAD~1'                # Undo last commit, keep changes staged
 abbr -S grh='git reset HEAD~1'                         # Undo last commit, keep changes unstaged
-abbr -S greset='git reset --hard HEAD'                 # Reset to last commit, discard all changes
