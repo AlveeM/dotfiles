@@ -1,6 +1,7 @@
 # Bootstrap project for this dotfiles repo. Apply with:
-#   mise bootstrap --from <repo-url> --from-dir ~/.zsh          (work / base tools only)
+#   mise bootstrap --from <repo-url> --from-dir ~/.zsh               (base tools only)
 #   mise -E personal bootstrap --from <repo-url> --from-dir ~/.zsh   (personal machines)
+#   mise -E work bootstrap --from <repo-url> --from-dir ~/.zsh       (work machines)
 # See bootstrap.sh and README.md.
 
 # apt entries are skipped where apt-get is missing (macOS). "latest" accepts whatever

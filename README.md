@@ -19,6 +19,10 @@ decide it should.
 curl -fsSL https://raw.githubusercontent.com/AlveeM/dotfiles/v1/bootstrap.sh \
   | sh -s -- personal 'https://github.com/AlveeM/dotfiles.git?ref=v1'
 
+# Work machine (base tools + work tools; persists MISE_ENV=work)
+curl -fsSL https://raw.githubusercontent.com/AlveeM/dotfiles/v1/bootstrap.sh \
+  | sh -s -- work 'https://github.com/AlveeM/dotfiles.git?ref=v1'
+
 # Any other machine (base tools only)
 curl -fsSL https://raw.githubusercontent.com/AlveeM/dotfiles/v1/bootstrap.sh \
   | sh -s -- 'https://github.com/AlveeM/dotfiles.git?ref=v1'
@@ -26,13 +30,13 @@ curl -fsSL https://raw.githubusercontent.com/AlveeM/dotfiles/v1/bootstrap.sh \
 
 You are piping a script into `sh`: read `bootstrap.sh` first, and keep the tag pinned.
 
-`bootstrap.sh [personal] <repo-url[?ref=tag]> [extra mise bootstrap flags]`:
+`bootstrap.sh [personal|work] <repo-url[?ref=tag]> [extra mise bootstrap flags]`:
 
 1. Ubuntu only: installs `curl`, `git` and `ca-certificates` with apt if missing (uses `sudo`).
    macOS only checks that `git` exists (`xcode-select --install` if not).
 2. Installs [mise](https://mise.jdx.dev) with `curl https://mise.run | sh` if missing
    (`MISE_VERSION` pins the version).
-3. Runs `mise bootstrap --from <url> --from-dir ~/.zsh` (with `-E personal` for `personal`).
+3. Runs `mise bootstrap --from <url> --from-dir ~/.zsh` (with `-E personal` or `-E work` when given).
 
 Environment: `DOTFILES_DIR` (default `~/.zsh`), `DOTFILES_URL` (instead of the argument),
 `MISE_VERSION`.
@@ -84,9 +88,9 @@ sure you want it replaced.
 | `personal` | base + `config/mise/config.personal.toml` (language runtimes, Kubernetes tools, prettier, and other personal CLIs) |
 | `work` | base + `config/mise/config.work.toml` (currently empty) |
 
-`mise -E personal bootstrap ...` on the first run writes `export MISE_ENV=personal` into
-`~/.zshenv` (via `mise.personal.toml`), so later shells and plain `mise` commands keep using
-the personal set.
+`mise -E personal bootstrap ...` (or `-E work`) on the first run writes `export MISE_ENV=personal`
+(or `work`) into `~/.zshenv` via `mise.personal.toml` (or `mise.work.toml`), so later shells and
+plain `mise` commands keep using that set.
 
 ## Machine-local files (not in the repo)
 
@@ -94,7 +98,7 @@ the personal set.
 |---|---|
 | `~/.gitconfig.local` | `[user] name` and `email`, included by `gitconfig` |
 | `~/.zshrc.work` | extra exports/config for a specific machine; sourced by `zshrc` if present |
-| `~/.zshenv` | `MISE_ENV` (written by a personal bootstrap) |
+| `~/.zshenv` | `MISE_ENV` (written by a personal or work bootstrap) |
 | `~/.config/mise/mise.personal.lock` | personal tool lockfile written by `mise lock` |
 
 Create `~/.gitconfig.local` on each new machine:
@@ -131,7 +135,8 @@ Headless servers do not need it: the font belongs to the terminal you connect fr
 ## Layout
 
 ```
-mise.toml  mise.personal.toml     bootstrap project and personal-only settings
+mise.toml  mise.personal.toml     bootstrap project and per-env settings
+mise.work.toml
 bootstrap.sh                      installs prerequisites and mise, then runs mise bootstrap
 zshrc  zprofile                   deployed to $HOME; zshrc sources zsh.d/ in a fixed order
 zsh.d/                            shell modules: path exports history aliases functions git

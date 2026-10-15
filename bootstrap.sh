@@ -2,19 +2,21 @@
 # Bootstrap a machine from this dotfiles repo: install what mise needs, install
 # mise, then run `mise bootstrap` from the repo. Safe to re-run.
 #
-# Usage: bootstrap.sh [personal] <repo-url[?ref=tag]> [extra mise bootstrap flags]
-#   personal   use the personal tool set and persist MISE_ENV=personal
+# Usage: bootstrap.sh [personal|work] <repo-url[?ref=tag]> [extra mise bootstrap flags]
+#   personal|work   use that tool set and persist MISE_ENV to ~/.zshenv
 #   repo-url   e.g. https://github.com/<you>/dotfiles.git?ref=v1 (or set DOTFILES_URL)
 # Env: DOTFILES_DIR (default ~/.zsh), MISE_VERSION (pin the mise version).
 set -eu
 
 env_name=""
-if [ "${1:-}" = personal ]; then
-  env_name=personal
-  shift
-fi
+case "${1:-}" in
+  personal|work)
+    env_name=$1
+    shift
+    ;;
+esac
 url=${1:-${DOTFILES_URL:-}}
-[ -n "$url" ] || { echo "usage: $0 [personal] <repo-url[?ref=tag]> [flags]" >&2; exit 2; }
+[ -n "$url" ] || { echo "usage: $0 [personal|work] <repo-url[?ref=tag]> [flags]" >&2; exit 2; }
 [ $# -eq 0 ] || shift
 dest=${DOTFILES_DIR:-$HOME/.zsh}
 
