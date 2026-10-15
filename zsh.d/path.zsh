@@ -3,8 +3,7 @@
 # NOTE: `mise activate` stays in .zshrc and must run last.
 # ================================================================================
 
-# Golang variables
-export CGO_ENABLED=1
+# Go
 export PATH="$PATH:$HOME/go/bin"  # static $(go env GOPATH)/bin to avoid a subprocess at startup
 
 # >>> conda initialize (lazy) >>>

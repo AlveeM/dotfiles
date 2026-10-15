@@ -60,7 +60,6 @@ abbr -S git p=push
 abbr -S git pf='push --force-with-lease'
 abbr -S push="git push"
 
-abbr -S gr='git rebase'
 abbr -S -g 'git r'='git rebase'
 abbr -S git rc="git rebase --continue"
 abbr -S git ra="git rebase --abort"
@@ -68,7 +67,6 @@ abbr -S git rs="git rebase --skip"
 abbr -S git riu="git rebase -i --update-refs"
 abbr -S git ro="git rebase --onto"
 abbr -S -g "git rebase s"="git rebase --skip"
-abbr -S -g 'git rebase --update-refs i'='git rebase --update-refs -i'
 abbr -S -g 'git rebase -i u'='git rebase -i --update-refs'
 abbr -S -g 'git rebase i'='git rebase -i'
 abbr -S -g 'git rebase o'='git rebase --onto'

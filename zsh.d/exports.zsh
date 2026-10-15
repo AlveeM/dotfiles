@@ -1,12 +1,9 @@
 # ================================================================================
-# Environment exports (editor, fd/fzf, man, prompt sizing)
+# Environment exports (editor, fd/fzf, man)
 # ================================================================================
 
 # COLUMNS is not exported: starship's prompt passes --terminal-width="$COLUMNS"
 # itself, and an exported value goes stale for children after a resize.
-
-# Fix right format alignment (prevents right prompt margin issues)
-ZLE_RPROMPT_INDENT=0
 
 # Editor
 if (( $+commands[hx] )); then
@@ -14,6 +11,9 @@ if (( $+commands[hx] )); then
 else
   export EDITOR="vi" VISUAL="vi"
 fi
+
+# Go: build with cgo
+export CGO_ENABLED=1
 
 # Include hidden files, exclude .git, and intentionally traverse symlinked
 # directories. This broadens navigation results and may slow large linked trees.

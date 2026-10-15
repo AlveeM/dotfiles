@@ -24,28 +24,9 @@ unset _zsh_config
 [[ -r "$HOME/.zshrc.work" ]] && source "$HOME/.zshrc.work"
 
 # Install/update pinned plugins explicitly: zsh ~/.zsh/plugins/setup-plugins.zsh
-# Edit plugins.txt or plugins.lock, then run setup to regenerate plugins.zsh.
+# Edit the pin: SHAs in plugins.txt, then run setup to regenerate plugins.zsh.
 # The generated plugins.zsh is static; only setup needs Antidote itself.
 if [[ -r "$HOME/.zsh/plugins/plugins.zsh" ]]; then
-  # Debug startup with: ZSH_CONFIG_DEBUG=1 zsh
-  # Preserve the generated loader; disable deferred stderr suppression while
-  # it queues work, then restore the original zsh-defer implementation below.
-  if [[ ${ZSH_CONFIG_DEBUG:-0} == 1 ]]; then
-    # Load zsh-defer from the same path the generated loader uses.
-    _zsh_defer_source=( ${(M)${(f)"$(<$HOME/.zsh/plugins/plugins.zsh)"}:#*source *zsh-defer.plugin.zsh*} )
-    _zsh_defer_source=${(Q)${_zsh_defer_source[1]#*source }}
-    _zsh_defer_source=${_zsh_defer_source/#\$HOME/$HOME}
-    if [[ -n $_zsh_defer_source ]]; then
-      _zsh_source_required "$_zsh_defer_source"
-    else
-      print -u2 -- 'zsh: zsh-defer source not found in plugins.zsh'
-    fi
-    unset _zsh_defer_source
-    if (( $+functions[zsh-defer] )); then
-      functions[_zsh_config_original_defer]=$functions[zsh-defer]
-      zsh-defer() { _zsh_config_original_defer -2 "$@"; }
-    fi
-  fi
   source "$HOME/.zsh/plugins/plugins.zsh" || print -u2 -- 'zsh: plugin loading failed; run zsh ~/.zsh/plugins/setup-plugins.zsh'
 else
   print -u2 -- 'zsh: plugins unavailable; run zsh ~/.zsh/plugins/setup-plugins.zsh'
@@ -64,10 +45,6 @@ elif (( $+functions[history-substring-search-up] )); then
 fi
 
 # Completion runs after plugins add their directories to fpath.
-if (( $+functions[_zsh_config_original_defer] )); then
-  functions[zsh-defer]=$functions[_zsh_config_original_defer]
-  unfunction _zsh_config_original_defer
-fi
 _zsh_source_required "$HOME/.zsh/zsh.d/completion.zsh"
 
 # Cache generated init code, regenerating when the resolved binary changes
