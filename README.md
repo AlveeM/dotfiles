@@ -5,7 +5,8 @@ My zsh setup for macOS and Ubuntu. The repo lives at `~/.zsh` and is a
 system packages, CLI tools, and symlinks the config files into place.
 
 - Shell: zsh with pinned plugins (no installs or network access at shell startup).
-- Tools: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix (installed by mise).
+- Tools: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix, gh, and the markdown language servers
+  Helix uses (installed by mise).
 - Config: `.zshrc`, `.zprofile`, `.gitconfig`, starship, helix, mise.
 
 ## Quick start
@@ -70,7 +71,6 @@ Re-running is safe: parts that already match are left alone.
 | `~/.config/mise/config.personal.toml` | `config/mise/config.personal.toml` |
 | `~/.config/mise/config.work.toml` | `config/mise/config.work.toml` |
 | `~/.config/mise/mise.lock` | `config/mise/mise.lock` |
-| `~/.config/mise/mise.personal.lock` | `config/mise/mise.personal.lock` |
 
 If a real file is already where a symlink should go, the run stops and lists the
 conflicts. Move or review the file, then re-run with `--force-dotfiles` only if you are
@@ -80,8 +80,8 @@ sure you want it replaced.
 
 | Environment | Tools |
 |---|---|
-| none (default) | the base tools in `config/mise/config.toml`: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix |
-| `personal` | base + `config/mise/config.personal.toml` (language runtimes, Kubernetes tools, and other personal CLIs) |
+| none (default) | the base tools in `config/mise/config.toml`: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix, gh, markdown language servers |
+| `personal` | base + `config/mise/config.personal.toml` (language runtimes, Kubernetes tools, prettier, and other personal CLIs) |
 | `work` | base + `config/mise/config.work.toml` (currently empty) |
 
 `mise -E personal bootstrap ...` on the first run writes `export MISE_ENV=personal` into
@@ -95,6 +95,7 @@ the personal set.
 | `~/.gitconfig.local` | `[user] name` and `email`, included by `gitconfig` |
 | `~/.zshrc.work` | extra exports/config for a specific machine; sourced by `zshrc` if present |
 | `~/.zshenv` | `MISE_ENV` (written by a personal bootstrap) |
+| `~/.config/mise/mise.personal.lock` | personal tool lockfile written by `mise lock` |
 
 Create `~/.gitconfig.local` on each new machine:
 
@@ -122,7 +123,8 @@ Headless servers do not need it: the font belongs to the terminal you connect fr
 - **Plugins:** change the `pin:` commit in `plugins/plugins.txt`, review the diff upstream, then
   `zsh ~/.zsh/plugins/setup-plugins.zsh` and open a new shell. Nothing updates on its own.
 - **Tool versions:** `MISE_ENV=personal mise lock --global --platform macos-arm64,linux-x64,linux-arm64`
-  refreshes both lockfiles; commit them.
+  refreshes the lockfiles. Commit `config/mise/mise.lock`; `mise.personal.lock` is machine-local
+  (written to `~/.config/mise/` and not tracked here).
 - **apt packages:** `mise bootstrap packages upgrade`.
 - **Pull repo changes:** `cd ~/.zsh && git pull --ff-only && mise bootstrap`.
 

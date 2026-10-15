@@ -11,6 +11,7 @@ bat = "latest"
 fd = "latest"
 ripgrep = "latest"
 helix = "latest"
+gh = "latest"
 
 # Language servers used by helix/languages.toml (markdown)
 rumdl = "latest"

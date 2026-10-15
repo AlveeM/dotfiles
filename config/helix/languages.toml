@@ -18,6 +18,7 @@ language-servers = ["marksman", "harper-ls", "rumdl", "mpls"]
 soft-wrap.enable = true
 text-width = 80
 soft-wrap.wrap-at-text-width = true
+# prettier is installed only by the personal mise overlay (it needs node).
 formatter = { command = 'prettier', args = [
   "--parser",
   "markdown",
