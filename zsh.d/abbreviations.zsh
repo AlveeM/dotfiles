@@ -54,6 +54,7 @@ abbr -S -g 'git mn'='git merge --no-ff'                         # Merge, always 
 abbr -S -g 'git mnn'='git merge --no-edit --no-ff'              # Merge with a merge commit and the default message
 
 abbr -S -g 'git pl'='git pull'                                  # Pull from upstream
+abbr -S -g 'git plf'='git pull --ff-only'                       # Pull from upstream with a fast-forward merge
 abbr -S -g 'git p'='git push'                                   # Push to upstream
 
 abbr -S -g 'git r'='git rebase'                                 # Rebase
