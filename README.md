@@ -96,6 +96,17 @@ sure you want it replaced.
 (or `work`) into `~/.zshenv` via `mise.personal.toml` (or `mise.work.toml`), so later shells and
 plain `mise` commands keep using that set.
 
+### Adding tools
+
+1. Add the tool under `[tools]` in the file for the set it belongs to: `config/mise/config.toml`
+   for every machine, `config.personal.toml` or `config.work.toml` for one environment.
+   Registry tools are `name = "latest"`; tools outside the registry use a quoted backend prefix,
+   such as `"github:owner/repo" = "latest"`.
+2. Install it with `mise install` (add `-E personal` or `-E work` for those sets).
+3. Refresh the lockfile as described under [Updating](#updating) and commit
+   `config/mise/mise.lock`.
+4. If you added a base tool, add it to the "none (default)" row above.
+
 ## Machine-local files (not in the repo)
 
 | File | Purpose |
