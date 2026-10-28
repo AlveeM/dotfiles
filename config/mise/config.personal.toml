@@ -18,7 +18,7 @@ go = "latest"
 rust = "latest"
 
 # Java
-java = "temurin-17"
+java = "lts"
 
 # JS package managers
 pnpm = "latest"
