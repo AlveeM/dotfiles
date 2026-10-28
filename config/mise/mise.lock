@@ -48,24 +48,31 @@ backend = "vfox:eza"
 specifiers = ["latest"]
 
 [tools.eza."platforms.linux-arm64"]
+checksum = "sha256:40b87ae8628aa2ff0f0d2dc24ab52f689631366385c3da630bae745671fd71ec"
 url = "https://github.com/eza-community/eza/releases/download/v0.23.5/eza_aarch64-unknown-linux-gnu.tar.gz"
 
 [tools.eza."platforms.linux-arm64-musl"]
+checksum = "sha256:40b87ae8628aa2ff0f0d2dc24ab52f689631366385c3da630bae745671fd71ec"
 url = "https://github.com/eza-community/eza/releases/download/v0.23.5/eza_aarch64-unknown-linux-gnu.tar.gz"
 
 [tools.eza."platforms.linux-x64"]
+checksum = "sha256:35c70c5c43c29108075e58b893234c67ef585f0b53a7eaf8e9e7d4eec9f339b4"
 url = "https://github.com/eza-community/eza/releases/download/v0.23.5/eza_x86_64-unknown-linux-gnu.tar.gz"
 
 [tools.eza."platforms.linux-x64-musl"]
+checksum = "sha256:35c70c5c43c29108075e58b893234c67ef585f0b53a7eaf8e9e7d4eec9f339b4"
 url = "https://github.com/eza-community/eza/releases/download/v0.23.5/eza_x86_64-unknown-linux-gnu.tar.gz"
 
 [tools.eza."platforms.macos-arm64"]
+checksum = "sha256:c351f9506f6e30a8efb61701afc2313986004b8813c466c0f8b947db1ae891e9"
 url = "https://github.com/cargo-bins/cargo-quickinstall/releases/download/eza-0.23.5/eza-0.23.5-aarch64-apple-darwin.tar.gz"
 
 [tools.eza."platforms.macos-x64"]
+checksum = "sha256:61f9ee9ffb8d491be1edece6af496675f92f024dd9ce6cd25dfc5038eb342668"
 url = "https://github.com/cargo-bins/cargo-quickinstall/releases/download/eza-0.23.5/eza-0.23.5-x86_64-apple-darwin.tar.gz"
 
 [tools.eza."platforms.windows-x64"]
+checksum = "sha256:bbef561f5cfc8e778649b65e69c9c6e4c836c0fbe83ee3d0a5128091d797ed8a"
 url = "https://github.com/eza-community/eza/releases/download/v0.23.5/eza.exe_x86_64-pc-windows-gnu.tar.gz"
 
 [[tools.fd]]
@@ -149,50 +156,50 @@ url = "https://github.com/junegunn/fzf/releases/download/v0.74.5/fzf-0.74.5-wind
 url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/629581724"
 
 [[tools.gh]]
-version = "2.102.0"
+version = "2.103.3"
 backend = "aqua:cli/cli"
 specifiers = ["latest"]
 
 [tools.gh."platforms.linux-arm64"]
-checksum = "sha256:7862c86c72f43df3a2d93ddde6f473285b4e2af61b494849846827e513ef6484"
-url = "https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/599854680"
+checksum = "sha256:ee32df2323c8847f5fac6cb6b4b69ca75828e9329a8f22f677021f7b3306ce63"
+url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195636"
 provenance = "github-attestations"
 
 [tools.gh."platforms.linux-arm64-musl"]
-checksum = "sha256:7862c86c72f43df3a2d93ddde6f473285b4e2af61b494849846827e513ef6484"
-url = "https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/599854680"
+checksum = "sha256:ee32df2323c8847f5fac6cb6b4b69ca75828e9329a8f22f677021f7b3306ce63"
+url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195636"
 provenance = "github-attestations"
 
 [tools.gh."platforms.linux-x64"]
-checksum = "sha256:bb766f710eef8ede859c18578c72c327597cd4c8a85b06001b1f3843c6019386"
-url = "https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/599854672"
+checksum = "sha256:4c806978ffce1cec70853302a56d70ac6da4f19bae7adca4e1a8ab00633dd91d"
+url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195621"
 provenance = "github-attestations"
 
 [tools.gh."platforms.linux-x64-musl"]
-checksum = "sha256:bb766f710eef8ede859c18578c72c327597cd4c8a85b06001b1f3843c6019386"
-url = "https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/599854672"
+checksum = "sha256:4c806978ffce1cec70853302a56d70ac6da4f19bae7adca4e1a8ab00633dd91d"
+url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195621"
 provenance = "github-attestations"
 
 [tools.gh."platforms.macos-arm64"]
-checksum = "sha256:da922c20d1792e5b2cbf375593d7a658acf034c12c84e007e71c76ef959c337e"
-url = "https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_macOS_arm64.zip"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/599854720"
+checksum = "sha256:d700207eae9ae98fe2b89535c2c087c07823d4628c56364695a5a07ef311c062"
+url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_macOS_arm64.zip"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195704"
 provenance = "github-attestations"
 
 [tools.gh."platforms.macos-x64"]
-checksum = "sha256:b245f24eb2bf5f75b426b4c26da3651a107f8d5b6f4fddfbfccc5679041378b3"
-url = "https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_macOS_amd64.zip"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/599854716"
+checksum = "sha256:a2f86418f4350ae6e9ec60d5000bdf7665728436946a97fc27fe50e6ae752682"
+url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_macOS_amd64.zip"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195693"
 provenance = "github-attestations"
 
 [tools.gh."platforms.windows-x64"]
-checksum = "sha256:ae64e556ecc240b200f7eba60d550e4bb60d78e860e69dd88c449405b86067f4"
-url = "https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_windows_amd64.zip"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/599854760"
+checksum = "sha256:98d0cfa794721665d7973dd728c78aff7bd836d58f10f6d7a03568eccb0a22e0"
+url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_windows_amd64.zip"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195750"
 provenance = "github-attestations"
 
 [[tools."github:mhersson/mpls"]]
@@ -236,44 +243,50 @@ url = "https://github.com/mhersson/mpls/releases/download/v0.23.0/mpls_0.23.0_wi
 url_api = "https://api.github.com/repos/mhersson/mpls/releases/assets/574698529"
 
 [[tools.harper-ls]]
-version = "2.12.0"
+version = "2.13.0"
 backend = "aqua:Automattic/harper/harper-ls"
 specifiers = ["latest"]
 
 [tools.harper-ls."platforms.linux-arm64"]
-checksum = "sha256:707ff8fb54bd53980253625f43f47c531f28cf8035fe4697be5177bed7eda454"
-url = "https://github.com/Automattic/harper/releases/download/v2.12.0/harper-ls-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/603956717"
+checksum = "sha256:05ff6766d52fd161cf8634808d9af51d7f0864d12a3423b12dc9ebd199b469db"
+checksum_source = "mise-versions"
+url = "https://github.com/Automattic/harper/releases/download/v2.13.0/harper-ls-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/647655087"
 
 [tools.harper-ls."platforms.linux-arm64-musl"]
-checksum = "sha256:707ff8fb54bd53980253625f43f47c531f28cf8035fe4697be5177bed7eda454"
-url = "https://github.com/Automattic/harper/releases/download/v2.12.0/harper-ls-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/603956717"
+checksum = "sha256:05ff6766d52fd161cf8634808d9af51d7f0864d12a3423b12dc9ebd199b469db"
+checksum_source = "mise-versions"
+url = "https://github.com/Automattic/harper/releases/download/v2.13.0/harper-ls-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/647655087"
 
 [tools.harper-ls."platforms.linux-x64"]
-checksum = "sha256:da87a01c49e535d6d6157f388ffc87edd9d4065fe04cc13b7a10b227defb1ba7"
-url = "https://github.com/Automattic/harper/releases/download/v2.12.0/harper-ls-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/604099381"
+checksum = "sha256:44ee0396e5d4a99a0dfa9756ca3af827f9f8b34bcb5f6ad0e8cca535b2f89021"
+checksum_source = "mise-versions"
+url = "https://github.com/Automattic/harper/releases/download/v2.13.0/harper-ls-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/647528929"
 
 [tools.harper-ls."platforms.linux-x64-musl"]
-checksum = "sha256:da87a01c49e535d6d6157f388ffc87edd9d4065fe04cc13b7a10b227defb1ba7"
-url = "https://github.com/Automattic/harper/releases/download/v2.12.0/harper-ls-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/604099381"
+checksum = "sha256:44ee0396e5d4a99a0dfa9756ca3af827f9f8b34bcb5f6ad0e8cca535b2f89021"
+checksum_source = "mise-versions"
+url = "https://github.com/Automattic/harper/releases/download/v2.13.0/harper-ls-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/647528929"
 
 [tools.harper-ls."platforms.macos-arm64"]
-checksum = "sha256:98b3a404c91241c47448c623fe0b3eb79a980f23056b1feb88425194c2812770"
-url = "https://github.com/Automattic/harper/releases/download/v2.12.0/harper-ls-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/603959798"
+checksum = "sha256:a6ca491db1c929426c5c0bbbf132f8d2f1f253b98680fe103e48bde408676cc3"
+url = "https://github.com/Automattic/harper/releases/download/v2.13.0/harper-ls-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/647530709"
 
 [tools.harper-ls."platforms.macos-x64"]
-checksum = "sha256:f543e017ae9d3091dc455b48e8ecfea4371b140d113832868103a74ebe5277c6"
-url = "https://github.com/Automattic/harper/releases/download/v2.12.0/harper-ls-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/604099335"
+checksum = "sha256:5e403a05fa785a44da652013cb859b8aefd3809521e37621fb94320503f1e0c5"
+checksum_source = "mise-versions"
+url = "https://github.com/Automattic/harper/releases/download/v2.13.0/harper-ls-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/647538332"
 
 [tools.harper-ls."platforms.windows-x64"]
-checksum = "sha256:455f82163054ac54a489b01e64ec62916dec5560165074f756633fe3f53d994e"
-url = "https://github.com/Automattic/harper/releases/download/v2.12.0/harper-ls-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/603960838"
+checksum = "sha256:96449886ebce74973cbfeb06b9c466aef29094e89dd3d5676745f38a53951e1d"
+checksum_source = "mise-versions"
+url = "https://github.com/Automattic/harper/releases/download/v2.13.0/harper-ls-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/647655215"
 
 [[tools.helix]]
 version = "25.07.1"
@@ -396,91 +409,97 @@ url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15
 url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478119643"
 
 [[tools.rumdl]]
-version = "0.2.79"
+version = "0.3.0"
 backend = "aqua:rvben/rumdl"
 specifiers = ["latest"]
 
 [tools.rumdl."platforms.linux-arm64"]
-checksum = "sha256:466b22a4fae861e104a31bfda940adf2a96d77ed683d7ed19c261cf7abc36094"
-url = "https://github.com/rvben/rumdl/releases/download/v0.2.79/rumdl-v0.2.79-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/625384614"
+checksum = "sha256:b0ea55fdbabcc2b86e7ef594c3fd86cfee620844c2d8cea4a3135b9468d2845c"
+url = "https://github.com/rvben/rumdl/releases/download/v0.3.0/rumdl-v0.3.0-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/649870478"
 provenance = "github-attestations"
 
 [tools.rumdl."platforms.linux-arm64-musl"]
-checksum = "sha256:f2ccb236a6b62b9980711a2f54c1e0d8d91ceaea5d7313d0b1a615237b3130bf"
-url = "https://github.com/rvben/rumdl/releases/download/v0.2.79/rumdl-v0.2.79-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/625384620"
+checksum = "sha256:5a6274e69bf22164ee6adb47381c870f61ece4648a89fa8b178f0ed24857154a"
+url = "https://github.com/rvben/rumdl/releases/download/v0.3.0/rumdl-v0.3.0-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/649870475"
 provenance = "github-attestations"
 
 [tools.rumdl."platforms.linux-x64"]
-checksum = "sha256:82618d7c79c83b83781f7a30930402384fbf31d8b7ac071a63a3abccb0dbdef9"
-url = "https://github.com/rvben/rumdl/releases/download/v0.2.79/rumdl-v0.2.79-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/625384609"
+checksum = "sha256:1d23c7f8c10d534e53c76b34a22f7dea7f5e5ebe493adbb7e25a401f88620c87"
+url = "https://github.com/rvben/rumdl/releases/download/v0.3.0/rumdl-v0.3.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/649870483"
 provenance = "github-attestations"
 
 [tools.rumdl."platforms.linux-x64-musl"]
-checksum = "sha256:a85ae77c6880616118e10dda1e36292df59815bcfbf767201736ff6971213cf3"
-url = "https://github.com/rvben/rumdl/releases/download/v0.2.79/rumdl-v0.2.79-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/625384616"
+checksum = "sha256:6c90c398f04c11a09dcbd2da08bdaa6d53d9b14393e3cd32dbdf4da5620eec5c"
+url = "https://github.com/rvben/rumdl/releases/download/v0.3.0/rumdl-v0.3.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/649870477"
 provenance = "github-attestations"
 
 [tools.rumdl."platforms.macos-arm64"]
-checksum = "sha256:8c0ecf93a61bf612df5f6c6f22813d066a6f51a5680f3c12da49b93ed892aebb"
-url = "https://github.com/rvben/rumdl/releases/download/v0.2.79/rumdl-v0.2.79-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/625384611"
+checksum = "sha256:bc62f4176dd9257547c939fa152b535b6f393365acd352fcfd94e5e19a792bb4"
+url = "https://github.com/rvben/rumdl/releases/download/v0.3.0/rumdl-v0.3.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/649870474"
 provenance = "github-attestations"
 
 [tools.rumdl."platforms.macos-x64"]
-checksum = "sha256:09cca63968f9a3f35faab71ac8d09bda1a96ba4e0e38cac54bfb7b544523075f"
-url = "https://github.com/rvben/rumdl/releases/download/v0.2.79/rumdl-v0.2.79-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/625384605"
+checksum = "sha256:beb48c38948fcb9bb4eb4994af9830cbb6b8a0b97a3ec0ea3233151065d2e56e"
+url = "https://github.com/rvben/rumdl/releases/download/v0.3.0/rumdl-v0.3.0-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/649870476"
 provenance = "github-attestations"
 
 [tools.rumdl."platforms.windows-x64"]
-checksum = "sha256:07d12118c143976fadaaf7d053ac6be328798ce3b59b3f774572ac946b123672"
-url = "https://github.com/rvben/rumdl/releases/download/v0.2.79/rumdl-v0.2.79-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/625384622"
+checksum = "sha256:72ed0bd3912560758cfc66cb439a2804755a858573e605cd3d1e65e8aa79d2a1"
+url = "https://github.com/rvben/rumdl/releases/download/v0.3.0/rumdl-v0.3.0-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/rvben/rumdl/releases/assets/649870485"
 provenance = "github-attestations"
 
 [[tools.starship]]
-version = "1.26.0"
+version = "1.27.0"
 backend = "aqua:starship/starship"
 specifiers = ["latest"]
 
 [tools.starship."platforms.linux-arm64"]
-checksum = "sha256:dc30189378d2f2e287384e8a692d3f95ad1df64cf0e8c36aa9201516028aed6b"
-url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/starship/starship/releases/assets/460374586"
+checksum = "sha256:341f5cbf24699fa0b27ec88965ad25f862ea09e15d35a543fd6ffdff1d2aa00d"
+checksum_source = "mise-versions"
+url = "https://github.com/starship/starship/releases/download/v1.27.0/starship-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/starship/starship/releases/assets/650074383"
 
 [tools.starship."platforms.linux-arm64-musl"]
-checksum = "sha256:dc30189378d2f2e287384e8a692d3f95ad1df64cf0e8c36aa9201516028aed6b"
-url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/starship/starship/releases/assets/460374586"
+checksum = "sha256:341f5cbf24699fa0b27ec88965ad25f862ea09e15d35a543fd6ffdff1d2aa00d"
+checksum_source = "mise-versions"
+url = "https://github.com/starship/starship/releases/download/v1.27.0/starship-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/starship/starship/releases/assets/650074383"
 
 [tools.starship."platforms.linux-x64"]
-checksum = "sha256:321f0dd7af8340a5f2e6a8fec6538a04f617486f9ec70d878f91c09cd8deef22"
-url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/starship/starship/releases/assets/460374620"
+checksum = "sha256:3b94758850901717eb36aa1b53f8492c1322506ec6d41273bc6151e79ed8e4a1"
+checksum_source = "mise-versions"
+url = "https://github.com/starship/starship/releases/download/v1.27.0/starship-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/starship/starship/releases/assets/650074501"
 
 [tools.starship."platforms.linux-x64-musl"]
-checksum = "sha256:b7c232b0e8249d8e55a40beb79c5c43a7d370f3f9408bd215deb0170daeaadf3"
-url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/starship/starship/releases/assets/460374630"
+checksum = "sha256:10c8eb4cb3b761d9bf59ea828444c2dab36c900b7d69a69e08814b286969df89"
+checksum_source = "mise-versions"
+url = "https://github.com/starship/starship/releases/download/v1.27.0/starship-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/starship/starship/releases/assets/650074510"
 
 [tools.starship."platforms.macos-arm64"]
-checksum = "sha256:c40b27b11f580411e068f2fa6c1be7830a387c0bc47a94d1d37f32b054c5361d"
-url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/starship/starship/releases/assets/460374577"
+checksum = "sha256:5362da8cb2928f98f3ce0ffda697cf0f8de70081db000dae316d6d3a404f6cf0"
+url = "https://github.com/starship/starship/releases/download/v1.27.0/starship-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/starship/starship/releases/assets/650074353"
 
 [tools.starship."platforms.macos-x64"]
-checksum = "sha256:5548f406a4b6f5695903bdea83f77ce47ec12c8c0e62dabd33122d8f133e4207"
-url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/starship/starship/releases/assets/460374608"
+checksum = "sha256:344e4d38787e0aa86dd522ae5462e6fb6da1227691f81a79ffed480a4563ccb3"
+checksum_source = "mise-versions"
+url = "https://github.com/starship/starship/releases/download/v1.27.0/starship-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/starship/starship/releases/assets/650074453"
 
 [tools.starship."platforms.windows-x64"]
-checksum = "sha256:690021e22f2bf2c57d5867dc0fababe5e55e714c26942bd909ffddb6c5df42f2"
-url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/starship/starship/releases/assets/460374615"
+checksum = "sha256:7764f861805376af2812dd78c84fadc16b714cf3f346baed9b597bfda8484403"
+checksum_source = "mise-versions"
+url = "https://github.com/starship/starship/releases/download/v1.27.0/starship-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/starship/starship/releases/assets/650074470"
 
 [[tools.tmux]]
 version = "3.7c"
