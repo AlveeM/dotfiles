@@ -2,18 +2,18 @@
 
 My zsh setup for macOS and Ubuntu. The repo lives at `~/.zsh` and is a
 [mise bootstrap project](https://mise.jdx.dev/bootstrap.html): one command installs the
-system packages, CLI tools, and symlinks the config files into place.
+system packages and CLI tools, then symlinks the config files into place.
 
 - Shell: zsh with pinned plugins (zsh-defer, completions, autosuggestions, syntax highlighting,
   history substring search, zsh-abbr); no installs or network access at shell startup.
-- Tools: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix, tmux, zellij, gh, and the markdown language servers
-  Helix uses (installed by mise).
+- Tools, installed by mise: starship, zoxide, fzf, eza, bat, fd, ripgrep, helix, tmux, zellij, gh,
+  and the markdown language servers Helix uses.
 - Config: `.zshrc`, `.zprofile`, `.gitconfig`, starship, helix, ghostty, tmux, zellij, mise.
 
 ## Quick start
 
-Pin to a tag (`?ref=v1`) on machines where the config should only change when you
-decide it should.
+The commands below pin the repo to the `v1` tag (`?ref=v1`). Keep the pin on machines where
+the config should change only when you decide it should.
 
 ```sh
 # Personal machine (base tools + personal tools; persists MISE_ENV=personal)
@@ -29,9 +29,10 @@ curl -fsSL https://raw.githubusercontent.com/AlveeM/dotfiles/v1/bootstrap.sh \
   | sh -s -- 'https://github.com/AlveeM/dotfiles.git?ref=v1'
 ```
 
-You are piping a script into `sh`: read `bootstrap.sh` first, and keep the tag pinned.
+These commands pipe a script into `sh`, so read `bootstrap.sh` before running them, and keep
+the tag pinned.
 
-`bootstrap.sh [personal|work] <repo-url[?ref=tag]> [extra mise bootstrap flags]`:
+`bootstrap.sh [personal|work] <repo-url[?ref=tag]> [extra mise bootstrap flags]` does three things:
 
 1. Ubuntu only: installs `curl`, `git` and `ca-certificates` with apt if missing (uses `sudo`).
    macOS only checks that `git` exists (`xcode-select --install` if not).
@@ -39,19 +40,19 @@ You are piping a script into `sh`: read `bootstrap.sh` first, and keep the tag p
    (`MISE_VERSION` pins the version).
 3. Runs `mise bootstrap --from <url> --from-dir ~/.zsh` (with `-E personal` or `-E work` when given).
 
-Environment: `DOTFILES_DIR` (default `~/.zsh`), `DOTFILES_URL` (instead of the argument),
-`MISE_VERSION`.
+Environment variables: `DOTFILES_DIR` (default `~/.zsh`), `DOTFILES_URL` (used instead of the
+URL argument), and `MISE_VERSION`.
 
 After the first run, trust the repo's mise config once so mise stops warning when your
 shell is inside `~/.zsh`: `cd ~/.zsh && mise trust`.
 
-Preview without changing anything: add `--dry-run` (the first run only prints the clone
-command because no checkout exists yet). To preview the real plan, clone once, then
+To preview without changing anything, add `--dry-run`. On a first run this only prints the
+clone command, because no checkout exists yet. To preview the real plan, clone once, then run
 `cd ~/.zsh && mise trust && mise bootstrap --dry-run`.
 
 ## What `mise bootstrap` does here
 
-Defined in [`mise.toml`](mise.toml), in mise's own order:
+[`mise.toml`](mise.toml) defines these stages, which mise runs in its own order:
 
 1. **packages**: apt packages on Ubuntu (`zsh`, `git`, `curl`, `build-essential`, compile
    libraries). apt entries are skipped on macOS; on macOS the JetBrains Mono Nerd Font cask
@@ -92,9 +93,9 @@ sure you want it replaced.
 | `personal` | base + `config/mise/config.personal.toml` (language runtimes, Kubernetes tools, prettier, and other personal CLIs) |
 | `work` | base + `config/mise/config.work.toml` (currently empty) |
 
-`mise -E personal bootstrap ...` (or `-E work`) on the first run writes `export MISE_ENV=personal`
-(or `work`) into `~/.zshenv` via `mise.personal.toml` (or `mise.work.toml`), so later shells and
-plain `mise` commands keep using that set.
+On the first run, `mise -E personal bootstrap ...` (or `-E work`) writes `export MISE_ENV=personal`
+(or `work`) into `~/.zshenv` via `mise.personal.toml` (or `mise.work.toml`). Later shells and
+plain `mise` commands then keep using that set.
 
 ### Adding tools
 
@@ -141,9 +142,9 @@ Git functions live in `zsh.d/git.zsh`. Anything that discards work asks for conf
 | `gdr <branch>` | delete a remote branch (confirms) |
 | `gpurge` / `gpurgef` | delete local branches whose upstream is gone (`-d` / `-D`, the latter confirms) |
 
-`zsh.d/abbreviations.zsh` defines the short git abbreviations (zsh-abbr; `abbr -S list` shows them, and the file header explains
-the three scopes). An expansion puts the cursor at its first `%` marker; press `Alt-;`
-(`zsh.d/keybindings.zsh`) to jump to the next marker and delete it.
+`zsh.d/abbreviations.zsh` defines the short git abbreviations (zsh-abbr). `abbr -S list` shows
+them, and the file header explains the three scopes. An expansion leaves the cursor at its first
+`%` marker; press `Alt-;` (`zsh.d/keybindings.zsh`) to jump to the next marker and delete it.
 
 The fzf helpers live in `zsh.d/functions.zsh`:
 
